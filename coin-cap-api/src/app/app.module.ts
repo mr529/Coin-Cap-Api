@@ -10,7 +10,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
-import { CryptoCallService } from './conversion/service/cryptocall.service';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
@@ -18,6 +17,7 @@ import { ListComponent } from './list/list.component'
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { FilterPipe } from './pipe/filter.pipe';
+import { CryptocallsService } from './cryptocalls.service';
 
 
 
@@ -48,7 +48,7 @@ const effects: Type<any>[] | undefined = [
     MatDividerModule,
     MatListModule
   ],
-  providers: [CryptoCallService],
+  providers: [CryptocallsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

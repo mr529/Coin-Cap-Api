@@ -5,17 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, filterString: string) {
-    if (value?.length === 0 || filterString === '') {
+  transform(value: any, filterString: string= '') {
+    var upperLetter = filterString.toUpperCase();
+    if (!value){
+      return null;
+    } 
+    if (!filterString || filterString === ''){
       return value;
-    }
-
-    const cryptoList = [];
-    for (const crypto of value) {
-      if (crypto['name'].includes(filterString)) {
-        cryptoList.push(crypto);
-      }
-    }
-    return cryptoList;
+    } 
+    return value.filter((list: any) => 
+      list['name']?.toUpperCase()?.startsWith(upperLetter));
   }
 }

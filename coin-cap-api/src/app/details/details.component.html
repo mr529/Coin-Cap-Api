@@ -9,15 +9,29 @@
                 <mat-label>Search Asset..</mat-label>
                 <input matInput [formControl]="cryptoname" required>
             </mat-form-field>
-            <br><br>
+            <br>
             <button mat-raised-button color="primary" (click)="submit()">Search</button>
-            <div *ngIf="cryptodata?.name !== null">
-                <mat-form-field appearance="fill">
+            <br><br>
+            <div *ngIf="cryptodata?.name != null">
+                <h3>Below is the following information regarding {{cryptodata?.name}}:</h3><br>
+                <p>
+                    Total quantity of asset issued: {{cryptodata?.maxSupply || 'Not Available'}}<br>
+                    Supply x price: {{cryptodata?.supply}}<br>
+                    this number is directly associated with the marketcap whereas the highest marketcap receives rank 1: {{cryptodata?.rank}}<br>
+                    Total quantity of asset issued: {{cryptodata?.marketCapUsd | currency}}<br>
+                    Quantity of trading volume represented in USD over the last 24 hours: {{cryptodata?.volumeUsd24Hr}}<br>
+                    Volume-weighted price based on real-time market data, translated to USD: {{cryptodata?.priceUsd | currency}} <br>
+                    Volume Weighted Average Price in the last 24 hours: {{cryptodata?.vwap24Hr}} 
+                </p>
+                <br><br>
+                <mat-form-field  appearance="fill">
                     <mat-label>{{cryptodata?.name}} Conversion..</mat-label>
-                    <input matInput [formControl]="cryptoname" required>
+                    <input type="number" matInput [formControl]="cryptoconvert" required>
                 </mat-form-field>
                 <br>
                 <button mat-raised-button color="primary" (click)="convert()">convert</button>
+                <br><br>
+                <strong *ngIf="conversionValue">YOU HAVE {{conversionValue}} IN {{cryptodata?.name}}</strong>
             </div>
         </mat-card-content>
     </mat-card>

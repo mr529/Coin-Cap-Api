@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CryptoCallService } from '../conversion/service/cryptocall.service';
+import { CryptocallsService } from '../cryptocalls.service';
 import { cryptodata } from '../models/crypto';
-import * as _ from 'lodash';
 
 
 @Component({
@@ -13,21 +12,17 @@ export class ListComponent implements OnInit {
   cryptodata?: cryptodata[];
   filteredString: string = '';
 
-  constructor(private service?: CryptoCallService) { }
+  constructor(private service?: CryptocallsService) { }
   ngOnInit(): void {
     this.getCryptoData();
   }
   
   getCryptoData(): void {
-    this.cryptodata = this?.service?.cryptoData;
-    console.warn(this.cryptodata);
-    if (this.cryptodata?.length === 0) {
+    this.cryptodata = this?.service?.resultsList;
+    if (this.cryptodata?.length === 0 || this.cryptodata === undefined) {
       this.service?.getCryptoList().subscribe(
         (response: any) => {
         this.cryptodata = response.data;
-      },
-      (error) => {
-        console.warn(error);
       }
       );    
     }
