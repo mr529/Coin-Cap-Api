@@ -1,0 +1,23 @@
+<div>
+    <mat-card *ngIf="cryptodata">
+        <mat-card-header>
+          <mat-card-title>Cryptocurrency List</mat-card-title>
+        </mat-card-header>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Search.." autocomplete="off" [(ngModel)]="filteredString">
+          </mat-form-field>
+        <mat-card-content>
+          <mat-nav-list>
+            <mat-list-item
+              *ngFor="let crypto of cryptodata | filter:filteredString"
+              class="text-white"
+            >
+              <h3 matLine>{{ crypto.name }} ({{ crypto.symbol }})</h3>
+              <p matLine>{{ crypto.marketCapUsd | currency }}</p>
+              {{ crypto.priceUsd | currency }}
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-card-content>
+    </mat-card>
+</div>

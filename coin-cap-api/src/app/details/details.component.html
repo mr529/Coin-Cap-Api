@@ -1,0 +1,24 @@
+<div>
+    <br>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>View Crypto Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill">
+                <mat-label>Search Asset..</mat-label>
+                <input matInput [formControl]="cryptoname" required>
+            </mat-form-field>
+            <br><br>
+            <button mat-raised-button color="primary" (click)="submit()">Search</button>
+            <div *ngIf="cryptodata?.name !== null">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{cryptodata?.name}} Conversion..</mat-label>
+                    <input matInput [formControl]="cryptoname" required>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" (click)="convert()">convert</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
