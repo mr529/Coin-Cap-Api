@@ -25,13 +25,13 @@
                 </p>
                 <br><br>
                 <mat-form-field  appearance="fill">
-                    <mat-label>{{cryptodata?.name}} Conversion..</mat-label>
+                    <mat-label># of {{cryptodata?.name}} you own?</mat-label>
                     <input type="number" matInput [formControl]="cryptoconvert" required>
                 </mat-form-field>
                 <br>
                 <button mat-raised-button color="primary" (click)="convert()">convert</button>
                 <br><br>
-                <strong *ngIf="conversionValue">YOU HAVE {{conversionValue}} IN {{cryptodata?.name}}</strong>
+                <strong *ngIf="conversionValue">YOU HAVE {{conversionValue | currency}} IN {{cryptodata?.name}}</strong>
             </div>
         </mat-card-content>
     </mat-card>

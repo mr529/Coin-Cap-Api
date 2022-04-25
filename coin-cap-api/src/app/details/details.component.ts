@@ -14,6 +14,7 @@ export class DetailsComponent implements OnInit {
   cryptoname = new FormControl('', [Validators.required]);
   cryptoconvert = new FormControl('', Validators.pattern(this.regex));
   conversionValue?: number;
+  conversionPlaceholder?: string;
   constructor(private service?: CryptocallsService) {
   }
 
@@ -24,9 +25,10 @@ export class DetailsComponent implements OnInit {
       this.service?.getCryptoDetails(this.cryptoname.value).subscribe((response: any) => {
         this.cryptodata = response.data;
       });    
+      this.conversionPlaceholder =`how much ${this.cryptodata?.name} you own..`
   }
   convert(): void {
-   this.conversionValue = this.cryptoconvert.value / parseInt(this.cryptodata?.priceUsd!)   
+   this.conversionValue = this.cryptoconvert.value * parseInt(this.cryptodata?.priceUsd!)   
    console.warn(this.cryptoconvert);
   }
 }
