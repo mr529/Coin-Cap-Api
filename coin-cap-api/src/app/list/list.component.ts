@@ -24,6 +24,7 @@ export class ListComponent implements OnInit {
       this.service?.getCryptoList().subscribe(
         (response: any) => {
         this.cryptodata = response.data;
+        this.errorMessage = '';
       }, 
       (error) => {
         this.errorMessage = error?.error?.error;

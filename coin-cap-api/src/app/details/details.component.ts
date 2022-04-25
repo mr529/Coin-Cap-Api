@@ -24,6 +24,7 @@ export class DetailsComponent implements OnInit {
     this.cryptodata = {} as cryptodata;
       this.service?.getCryptoDetails(this.cryptoname.value).subscribe((response: any) => {
         this.cryptodata = response.data;
+        this.errorMessage = '';
       }, 
       (error) => {
         this.errorMessage = error?.error?.error;
