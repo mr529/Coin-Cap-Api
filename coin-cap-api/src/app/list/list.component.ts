@@ -11,6 +11,7 @@ import { cryptodata } from '../models/crypto';
 export class ListComponent implements OnInit {
   cryptodata?: cryptodata[];
   filteredString: string = '';
+  errorMessage?: string;
 
   constructor(private service?: CryptocallsService) { }
   ngOnInit(): void {
@@ -23,6 +24,9 @@ export class ListComponent implements OnInit {
       this.service?.getCryptoList().subscribe(
         (response: any) => {
         this.cryptodata = response.data;
+      }, 
+      (error) => {
+        this.errorMessage = error?.error?.error;
       }
       );    
     }

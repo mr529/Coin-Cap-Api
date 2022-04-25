@@ -11,6 +11,9 @@
             </mat-form-field>
             <br>
             <button mat-raised-button color="primary" (click)="submit()">Search</button>
+            <div *ngIf="errorMessage" class="alert-alert-danger">
+                <strong>ERROR!</strong> {{errorMessage}}
+              </div>
             <br><br>
             <div *ngIf="cryptodata?.name != null">
                 <h3>Below is the following information regarding {{cryptodata?.name}}:</h3><br>

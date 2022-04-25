@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { cryptodata } from './models/crypto';
 
 @Injectable()
@@ -20,6 +21,8 @@ export class CryptocallsService {
     .pipe(
       tap((response: any) => {
           this.resultsList = response.data;
+      }),catchError((error) => {
+        throw error;
       })
     );
   }
@@ -30,6 +33,8 @@ export class CryptocallsService {
    ).pipe(
       tap((response: any) => {
           this.resultDetails = response.data;
+      }),catchError((error) => {
+        throw error;
       })
     );
   }

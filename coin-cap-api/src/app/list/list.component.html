@@ -3,6 +3,9 @@
         <mat-card-header>
           <mat-card-title>Cryptocurrency List</mat-card-title>
         </mat-card-header>
+        <div *ngIf="errorMessage" class="alert-alert-danger">
+            <strong>ERROR!</strong> {{errorMessage}}
+        </div>
         <mat-form-field appearance="fill">
             <input matInput placeholder="Search.." autocomplete="off" [(ngModel)]="filteredString">
           </mat-form-field>
